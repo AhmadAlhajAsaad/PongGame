@@ -15,7 +15,6 @@ public class GameManager
     private int _score2 = 0;
     private readonly Microsoft.Xna.Framework.Vector2 _pos1;
     private readonly Microsoft.Xna.Framework.Vector2 _pos2;
-    private readonly SpriteFont _font;
     private bool _p1won;
     private bool _p2won;
     private readonly SoundEffect _sfx;
@@ -24,7 +23,6 @@ public class GameManager
     {
         Globals.Texture = new(Globals.GraphicsDevice, 1, 1);
         Globals.Texture.SetData(new[] { Color.White});
-        _font = Globals.Content.Load<SpriteFont>("font");
         _sfx = Globals.Content.Load<SoundEffect>("pong");
 
         _pos1 = new(100, 100);
@@ -118,12 +116,6 @@ public class GameManager
         _p1.Draw();
         _p2.Draw();
         _ball.Draw();
-       Globals.SpriteBatch.DrawString(_font, _score1.ToString(), _pos1, Color.White * 0.1f);
-       Globals.SpriteBatch.DrawString(_font, _score2.ToString(), _pos2, Color.White * 0.1f);
-
-
-        if (_p1won) Globals.SpriteBatch.DrawString(_font, "P1 Won!", new(100, 400), Color.White);
-        if (_p2won) Globals.SpriteBatch.DrawString(_font, "P2 Won!", new(100, 400), Color.White);
 
         Globals.SpriteBatch.End();
     }
